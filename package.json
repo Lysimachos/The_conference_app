@@ -103,6 +103,8 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-transport-security",
     "cordova-plugin-device",
+    "cordova-plugin-console",
+    "cordova-plugin-inappbrowser",
     "cordova-plugin-console"
   ]
 }
