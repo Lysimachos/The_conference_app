@@ -58,7 +58,7 @@
   "cordovaPlugins": [
     "cordova-plugin-device",
     "cordova-plugin-console",
-    "com.ionic.keyboard",
+    "ionic-plugin-keyboard",
     "cordova-plugin-inappbrowser",
     "cordova-plugin-geolocation",
     {
@@ -81,6 +81,28 @@
     "cordova-plugin-geolocation",
     "cordova-plugin-network-information",
     "cordova-plugin-whitelist",
-    "cordova-plugin-transport-security"
+    "cordova-plugin-transport-security",
+    "cordova-plugin-device",
+    "cordova-plugin-console",
+    "cordova-plugin-device",
+    "cordova-plugin-console",
+    "ionic-plugin-keyboard",
+    "cordova-plugin-inappbrowser",
+    "cordova-plugin-geolocation",
+    "cordova-plugin-network-information",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-transport-security",
+    "cordova-plugin-device",
+    "cordova-plugin-console",
+    "cordova-plugin-device",
+    "cordova-plugin-console",
+    "cordova-plugin-inappbrowser",
+    "cordova-plugin-geolocation",
+    "cordova-plugin-geolocation",
+    "cordova-plugin-network-information",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-transport-security",
+    "cordova-plugin-device",
+    "cordova-plugin-console"
   ]
 }
