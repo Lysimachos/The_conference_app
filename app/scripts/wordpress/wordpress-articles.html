@@ -1,8 +1,13 @@
 <ion-view view-title="Articles">
 	<ion-content>
 		<div ng-repeat="article in vm.articles">
-			<div class="card" ng-click="vm.navigate(article.id)">
-				<div class="item item-text-wrap item-thumbnail-left">
+			<div class="list card" ng-click="vm.navigate(article.id)">
+				<div class="item item-divider">
+				  <h2>Xanthi</h2>
+				  <p>November 05, 1955</p>
+  			</div>
+				
+				<div class="item item-body">
 					<img ng-src="{{article.image}}">
 					<h2>{{article.title}}</h2>
 					<p>{{article.brief | limitTo: 120 }}{{article.brief.length > 120 ? '...' : ''}}</p>
