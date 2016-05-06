@@ -12,40 +12,42 @@
 		var url = 'http://demo.titaniumtemplates.com/wordpress/?json=1';
 		var articles = [];
 		var example_json={
-			id: 'numeric_id'
+			id: 'numeric_id',
 			title: 'title',
 			logo: 'url',
 			date: 'YY-MM-DD',
-			location: 'Venue',
+			location: 'City',
+			coordinates: 'Map Location',
+			venue: 'Venue',
 			contact: 'Contact',
 			about: 'About',
 			organizer: 'Organizer',
 			scedule: {
 				1: {
 					sub_id: 'sub_id',
-					Date: 'YY-MM-DD',
-					Start Time: 'HH::MM',
-					End Time: 'HH:MM',
-					Title: 'Title'
-					Speaker: 'First Last',
-					Description: 'Text description'
-					File: 'url',
-					Vanue: 'Location',
-					Links: 'url',
-					Image: 'image_url',
+					date: 'YY-MM-DD',
+					start_time: 'HH:MM',
+					end_time: 'HH:MM',
+					title: 'Title',
+					speaker: 'First Last',
+					description: 'Text description',
+					file: 'url',
+					vanue: 'Location',
+					links: 'url',
+					image: 'image_url',
 					},	
 				2: {
 					sub_id: 'sub_id',
-					Date: 'YY-MM-DD',
-					Start Time: 'HH::MM',
-					End Time: 'HH:MM',
-					Title: 'Title'
-					Speaker: 'First Last',
-					Description: 'Text description'
-					File: 'url',
-					Vanue: 'Location',
-					Links: 'url',
-					Image: 'image_url',
+					date: 'YY-MM-DD',
+					start_time: 'HH:MM',
+					end_time: 'HH:MM',
+					title: 'Title',
+					speaker: 'First Last',
+					description: 'Text description',
+					file: 'url',
+					vanue: 'Location',
+					links: 'url',
+					image: 'image_url',
 					},	
 				},	
 			
