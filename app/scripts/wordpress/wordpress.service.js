@@ -9,49 +9,49 @@
 
 	/* @ngInject */
 	function wordpressService($http, $q, _, htmlToPlainText) {
-		var url = 'http://demo.titaniumtemplates.com/wordpress/?json=1';
+		var url = '';
 		var articles = [];
-		var example_json={
-			id: 'numeric_id',
-			title: 'title',
-			logo: 'url',
-			date: 'YY-MM-DD',
-			location: 'City',
+		var example_json=[{
+			id: 1234,
+			title: 'Advanced Fluid Statics',
+			logo: 'http://innochain.net/wp-content/uploads/102_01.jpg',
+			date: '2016-05-18',
+			location: 'Xanthi',
 			coordinates: 'Map Location',
-			venue: 'Venue',
-			contact: 'Contact',
-			about: 'About',
-			organizer: 'Organizer',
+			venue: 'Duth Lobby',
+			contact: 'Call me @ 6987654321',
+			about: 'This is a non existent conferece',
+			organizer: 'Somebody',
 			scedule: {
 				1: {
-					sub_id: 'sub_id',
-					date: 'YY-MM-DD',
-					start_time: 'HH:MM',
-					end_time: 'HH:MM',
-					title: 'Title',
-					speaker: 'First Last',
+					sub_id: 1,
+					start_time: '12:00',
+					end_time: '13:00',
+					date: '2016-05-18',
+					title: 'Entry Level Fluid Dynamics',
+					speaker: 'Romaidis Orfeas',
 					description: 'Text description',
 					file: 'url',
-					vanue: 'Location',
+					vanue: 'Loby A',
 					links: 'url',
-					image: 'image_url',
+					image: 'https://www.newton.ac.uk/files/covers/968361.jpg',
 					},	
 				2: {
-					sub_id: 'sub_id',
-					date: 'YY-MM-DD',
-					start_time: 'HH:MM',
-					end_time: 'HH:MM',
-					title: 'Title',
-					speaker: 'First Last',
+					sub_id: 2,
+					start_time: '13:00',
+					end_time: '14:00',
+					date: '2016-05-18',
+					title: 'Secondary Level Fluids',
+					speaker: 'Polychronis Christos',
 					description: 'Text description',
 					file: 'url',
-					vanue: 'Location',
+					vanue: 'Loby A',
 					links: 'url',
-					image: 'image_url',
+					image: 'http://feelgrafix.com/data_images/out/13/877592-random-wallpaper.jpg',
 					},	
 				},	
 			
-			};
+			},];
 		var service = {
 			getArticles: getArticles,
 			getArticle: getArticle
@@ -61,33 +61,7 @@
 		////////////////
 
 		function getArticles() {
-			return $http.get(url)
-				.then(function(response) {
-					articles = [];
-					_.each(response.data.posts, function(item) {
-						var imageUrl = item.attachments.length > 0 ? item.attachments[0].images.full.url : null;
-						var tags = [];
-						_.each(item.tags, function(tag) {
-							tags.push(tag.title);
-						});
-
-						var contentIndex = item.content.indexOf('</p>') + 4;
-						var content = contentIndex === -1 ? item.content : item.content.substring(contentIndex);
-
-						articles.push({
-							id: item.id,
-							title: item.title,
-							brief: htmlToPlainText(item.excerpt),
-							image: imageUrl,
-							date: item.date,
-							content: content,
-							author: item.author.name,
-							tags: tags,
-							url: url
-						});
-					});
-					return articles;
-				});
+			return example_json;
 		}
 
 		function getArticle(articleId) {
