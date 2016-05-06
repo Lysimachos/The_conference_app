@@ -11,7 +11,45 @@
 	function wordpressService($http, $q, _, htmlToPlainText) {
 		var url = 'http://demo.titaniumtemplates.com/wordpress/?json=1';
 		var articles = [];
-
+		var example_json={
+			id: 'numeric_id'
+			title: 'title',
+			logo: 'url',
+			date: 'YY-MM-DD',
+			location: 'Venue',
+			contact: 'Contact',
+			about: 'About',
+			organizer: 'Organizer',
+			scedule: {
+				1: {
+					sub_id: 'sub_id',
+					Date: 'YY-MM-DD',
+					Start Time: 'HH::MM',
+					End Time: 'HH:MM',
+					Title: 'Title'
+					Speaker: 'First Last',
+					Description: 'Text description'
+					File: 'url',
+					Vanue: 'Location',
+					Links: 'url',
+					Image: 'image_url',
+					},	
+				2: {
+					sub_id: 'sub_id',
+					Date: 'YY-MM-DD',
+					Start Time: 'HH::MM',
+					End Time: 'HH:MM',
+					Title: 'Title'
+					Speaker: 'First Last',
+					Description: 'Text description'
+					File: 'url',
+					Vanue: 'Location',
+					Links: 'url',
+					Image: 'image_url',
+					},	
+				},	
+			
+			};
 		var service = {
 			getArticles: getArticles,
 			getArticle: getArticle
