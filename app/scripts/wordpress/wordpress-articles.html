@@ -8,8 +8,12 @@
 							<h2>Xanthi</h2>
 							<p>November 05, 1955</p>
 						</div>
+						<div class="col text-center">
+							<h1> Yoga conf
+							</h1>
+						</div>
 						<div class="col text-right">
-							<button class="button button-icon icon ion-android-star-outline"> <!--ng-click="addFavorite(institution)" future click function-->						
+							<button class="button button-icon icon ion-android-star-outline"> <!--ng-click="addFavorite(institution)" future click function-->
 							</button>
 						</div>
 					</div>
@@ -17,7 +21,7 @@
 
 				<div class="item item-body" ng-click="vm.navigate(article.id)">
 					<img ng-src="{{article.image}}">
-					<h2>{{article.title}}</h2>
+					<!--h2>{{article.title}}</h2-->
 					<p>{{article.brief | limitTo: 120 }}{{article.brief.length > 120 ? '...' : ''}}</p>
 				</div>
 			</div>
