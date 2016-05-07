@@ -22,7 +22,7 @@
 			contact: 'Call me @ 6987654321',
 			about: 'This is a non existent conferece',
 			organizer: 'Somebody',
-			scedule: {
+			schedule: {
 				1: {
 					sub_id: 1,
 					start_time: '12:00',
@@ -63,6 +63,7 @@
 		function getArticles() {
 			return $http.get(url)
 			.then(function(response) {
+				articles=example_json;
 				return example_json;
 			});
 			
@@ -73,13 +74,12 @@
 				return $q.when(_.find(articles, 'id', articleId));
 				} else {
 				var deferred = $q.defer();
-				
-			getArticles()
-			.then(function() {
-				deferred.resolve(_.find(articles, 'id', articleId));
-			});			
-			return deferred.promise;
+				getArticles()
+				.then(function() {
+					deferred.resolve(_.find(articles, 'id', articleId));
+				});			
+				return deferred.promise;
+			}
 		}
 	}
-}
 })();

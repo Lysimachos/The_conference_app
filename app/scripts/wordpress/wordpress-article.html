@@ -4,12 +4,41 @@
 	</ion-nav-buttons>
 
 	<ion-content has-header="true">
-		<img ng-src="{{vm.article.image}}" />
+		<img ng-src="{{vm.article.logo}}" />
 		<div class="content-inner">
 			<h1>{{vm.article.title}}</h1>
-			<div ng-bind-html="vm.article.content"></div>
-			<p class="postby">{{vm.article.author}} - {{vm.article.date}}</p>
-			<p class="categories">[{{vm.article.tags.join(", ")}}]</p>
+			<div ng-bind-html="vm.article.about"></div>
+			<p class="postby">{{vm.article.organizer}} - {{vm.article.date}}</p>
+			<p class="categories">[{{vm.article.location}}]</p>
 		</div>
+		
+		<div ng-repeat="entry in vm.article.schedule">
+			<div class="list card">
+				<div class="item item-divider">
+					<div class="row">
+   					<div class="col text-left">
+							<h2>{{entry.venue}}</h2>
+							<p>{{entry.date}} {{enry.start_time}}</p>
+						</div>
+						<div class="col text-center">
+							<h1> {{entry.title}}
+							</h1>
+							</div>
+						<div class="col text-right">
+						</div>
+					</div>
+  			</div>
+
+				<div class="item item-body">
+					<img ng-src="{{entry.image}}">
+					<h2>{{entry.speaker}}</h2>
+					<p>{{entry.description | limitTo: 120 }}{{entry.brief.length > 120 ? '...' : ''}}</p>
+				</div>
+			</div>
+		</div>	
+		
+		
+		
+		
 	</ion-content>
 </ion-view>
