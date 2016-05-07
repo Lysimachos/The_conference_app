@@ -49,8 +49,7 @@
 					links: 'url',
 					image: 'http://feelgrafix.com/data_images/out/13/877592-random-wallpaper.jpg',
 				},	
-			},	
-			
+			},				
 		},];
 		var service = {
 			getArticles: getArticles,
