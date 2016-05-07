@@ -5,12 +5,12 @@
 				<div class="item item-divider">
 					<div class="row">
    					<div class="col text-left">
-							<h2>Xanthi</h2>
-							<p>November 05, 1955</p>
+                            <h2 class="test"> {{article.organizer}}</h2>
+                            <p>{{article.location}}</p>
+							<p>{{article.date}}</p>
 						</div>
 						<div class="col text-center">
-							<h1> Yoga conf
-							</h1>
+							<h1 class="d-wraped-text"> {{article.title}} </h1>
 						</div>
 						<div class="col text-right">
 							<button class="button button-icon icon ion-android-star-outline"> <!--ng-click="addFavorite(institution)" future click function-->
@@ -20,9 +20,9 @@
   			</div>
 
 				<div class="item item-body" ng-click="vm.navigate(article.id)">
-					<img ng-src="{{article.image}}">
-					<!--h2>{{article.title}}</h2-->
-					<p>{{article.brief | limitTo: 120 }}{{article.brief.length > 120 ? '...' : ''}}</p>
+					<img ng-src="{{article.logo}}">
+        
+					<p>{{article.about | limitTo: 180 }}{{article.about.length > 120 ? '...' : ''}}</p>
 				</div>
 			</div>
 		</div>
