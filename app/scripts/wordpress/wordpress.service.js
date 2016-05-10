@@ -1,15 +1,15 @@
 (function() {
 	'use strict';
-
+	
 	angular
-		.module('supermodular.wordpress')
-		.factory('wordpressService', wordpressService);
-
+	.module('supermodular.wordpress')
+	.factory('wordpressService', wordpressService);
+	
 	wordpressService.$inject = ['$http', '$q', '_', 'htmlToPlainText'];
-
+	
 	/* @ngInject */
 	function wordpressService($http, $q, _, htmlToPlainText) {
-		var url = '';
+		var url = 'http://demo.titaniumtemplates.com/wordpress/?json=1';
 		var articles = [];
 		var example_json=[{
 			id: 1234,
@@ -22,7 +22,7 @@
 			contact: 'Call me @ 6987654321',
 			about: 'This is a non existent conferece',
 			organizer: 'Somebody',
-			scedule: {
+			schedule: {
 				1: {
 					sub_id: 1,
 					start_time: '12:00',
@@ -35,7 +35,7 @@
 					vanue: 'Loby A',
 					links: 'url',
 					image: 'https://www.newton.ac.uk/files/covers/968361.jpg',
-					},	
+				},	
 				2: {
 					sub_id: 2,
 					start_time: '13:00',
@@ -48,33 +48,35 @@
 					vanue: 'Loby A',
 					links: 'url',
 					image: 'http://feelgrafix.com/data_images/out/13/877592-random-wallpaper.jpg',
-					},	
 				},	
-			
-			},];
+			},				
+		},];
 		var service = {
 			getArticles: getArticles,
 			getArticle: getArticle
 		};
 		return service;
-
+		
 		////////////////
-
+		
 		function getArticles() {
-			return example_json;
+			return $http.get(url)
+			.then(function(response) {
+				articles=example_json;
+				return example_json;
+			});
+			
 		}
-
+		
 		function getArticle(articleId) {
 			if (articles.length) {
 				return $q.when(_.find(articles, 'id', articleId));
-			} else {
+				} else {
 				var deferred = $q.defer();
-
 				getArticles()
-					.then(function() {
-						deferred.resolve(_.find(articles, 'id', articleId));
-					});
-
+				.then(function() {
+					deferred.resolve(_.find(articles, 'id', articleId));
+				});			
 				return deferred.promise;
 			}
 		}

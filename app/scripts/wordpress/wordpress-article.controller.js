@@ -92,6 +92,7 @@
 			wordpressService.getArticle(articleId)
 				.then(function(article) {
 					vm.article = article;
+					console.log(article);
 				});
 		}
 	}
