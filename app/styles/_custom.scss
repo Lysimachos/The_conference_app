@@ -8,13 +8,10 @@
 
 // Lysimachos place 
 
-.test {
-    border:2px outset;
-}
-
-.d-wraped-text {
-  word-break: break-all;
-  white-space: normal;
+.d-centered-wraped-text {
+font-size:12px;
+overflow-x: auto;
+word-wrap: break-word;
 }
 
 

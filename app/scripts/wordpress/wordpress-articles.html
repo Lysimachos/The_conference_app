@@ -5,19 +5,28 @@
 				<div class="item item-divider">
 					<div class="row">
    					<div class="col text-left">
-                            <h2 class="test"> {{article.organizer}}</h2>
-                            <p>{{article.location}}</p>
-							<p>{{article.date}}</p>
+                            <h2>{{article.location}}</h2>
+							<p>{{article.date_start.substring(0,4)}} - </p>
+                            <p>{{article.date_end}}</p>
 						</div>
-						<div class="col text-center">
-							<h1 class="d-wraped-text"> {{article.title}} </h1>
-						</div>
+                        
+                        
+                        <div class="col text-center">
+						        {{article.organizer}}
+                        
+                        <div class="d-centered-wraped-text">
+                                <h1>{{article.title}}</h1>
+                            </div>
+                            
+                            
 						<div class="col text-right">
 							<button class="button button-icon icon ion-android-star-outline"> <!--ng-click="addFavorite(institution)" future click function-->
 							</button>
+                            </div>
 						</div>
 					</div>
   			</div>
+                    
 
 				<div class="item item-body" ng-click="vm.navigate(article.id)">
 					<img ng-src="{{article.logo}}">
