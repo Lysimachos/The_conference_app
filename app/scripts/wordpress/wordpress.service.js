@@ -15,13 +15,15 @@
 			id: 1234,
 			title: 'Advanced Fluid Statics',
 			logo: 'http://innochain.net/wp-content/uploads/102_01.jpg',
-			date: '2016-05-18',
+			date_start: '2016-05-18',
+			date_end: '2016-05-18',
 			location: 'Xanthi',
 			coordinates: 'Map Location',
 			venue: 'Duth Lobby',
 			contact: 'Call me @ 6987654321',
 			about: 'This is a non existent conferece',
 			organizer: 'Somebody',
+			link: 'url',
 			schedule: {
 				1: {
 					sub_id: 1,
@@ -33,7 +35,6 @@
 					description: 'Text description',
 					file: 'url',
 					vanue: 'Loby A',
-					links: 'url',
 					image: 'https://www.newton.ac.uk/files/covers/968361.jpg',
 				},	
 				2: {
@@ -46,7 +47,6 @@
 					description: 'Text description',
 					file: 'url',
 					vanue: 'Loby A',
-					links: 'url',
 					image: 'http://feelgrafix.com/data_images/out/13/877592-random-wallpaper.jpg',
 				},	
 			},				

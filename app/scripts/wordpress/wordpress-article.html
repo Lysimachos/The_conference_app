@@ -7,8 +7,10 @@
 		<div class="content-inner">
 			<h1>{{vm.article.title}}</h1>
 			<div ng-bind-html="vm.article.about"></div>
-			<p class="postby">{{vm.article.organizer}} - {{vm.article.date}}</p>
+			<p class="postby">{{vm.article.organizer}} 
+				from {{vm.article.date_start}} to {{vm.article.date_end}} </p>
 			<p class="categories">[{{vm.article.location}}] [{{vm.article.venue}}]</p>
+			<p class="categories">[{{vm.article.link}}] [{{vm.article.link}}]</p
 		</div>		
 		<div ng-repeat="entry in vm.article.schedule">
 			<a href="#" class="item-icon-right">
@@ -32,7 +34,6 @@
 						<h2>{{entry.speaker}}</h2>
 						<p>{{entry.description | limitTo: 120 }}{{entry.description.length > 120 ? '...' : ''}}</p>
 						<a href="{{entry.files}}">Related Files</a><br/>
-						<a href="{{entry.links}}">{{entry.links}}</a>
 					</div>
 				</div>				
 			</div>
