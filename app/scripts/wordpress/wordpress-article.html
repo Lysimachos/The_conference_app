@@ -8,35 +8,41 @@
 			<h1>{{vm.article.title}}</h1>
 			<div ng-bind-html="vm.article.about"></div>
 			<p class="postby">{{vm.article.organizer}} 
-				from {{vm.article.date_start}} to {{vm.article.date_end}} </p>
+			from {{vm.article.date_start}} to {{vm.article.date_end}} </p>
 			<p class="categories">[{{vm.article.location}}] [{{vm.article.venue}}]</p>
 			<p class="categories">[{{vm.article.link}}] [{{vm.article.link}}]</p
-		</div>		
-		<div ng-repeat="entry in vm.article.schedule">
-			<a href="#" class="item-icon-right">
-				<i class="icon ion-minus"></i>
-			</a>
-			<div class="list card">
-				<div class="item item-divider">
-					<div class="row">
-						<div class="col text-left">
-							<h2>{{entry.venue}}</h2>
-						</div>
-						<div class="col text-center">
-							<h2> {{entry.title}}</h2>
-							<p>{{entry.start_time}} - {{entry.end_time}}</p>
-						</div>
-						<div class="col text-right">
-						</div>
-					</div>
-					<div class="item item-body">
-						<!--img ng-src="{{entry.image}}"-->
-						<h2>{{entry.speaker}}</h2>
-						<p>{{entry.description | limitTo: 120 }}{{entry.description.length > 120 ? '...' : ''}}</p>
+			</div>		
+			<div ng-repeat="entry in vm.article.schedule">
+				<div class="list card">
+					<div class="item-expand " ng-class="vm.isItemShown(entry) ? ' active' : ' inactive'">
+						<h3>{{entry.title}}</h3>
+						<p>{{entry.start_time}} - {{entry.end_time}}</p>
+						<p>{{entry.speaker}}</p>
+						<p>{{entry.description}}</p>
 						<a href="{{entry.files}}">Related Files</a><br/>
 					</div>
-				</div>				
-			</div>
-		</div>			
-	</ion-content>
+					<div ng-click="vm.toggleItem(entry)" class="item-expand-footer">
+						<i ng-class="vm.isItemShown(entry) ? 'ion-ios-minus-outline' : 'ion-ios-plus-outline'"></i>
+						{{ vm.isGroupShown(entry) ? 'Less' : 'More' }}
+					</div>		
+				</div>
+			</div>			
+			<ion-list>					
+				<ion-item ng-repeat="entry in vm.article.schedule" class="item item-text-wrap">
+					<div class="item-expand " 
+					ng-class="vm.isItemShown(entry) ? ' active' : ' inactive'">
+						<h2>{{entry.title}}</h2>
+						<p>{{entry.start_time}} - {{entry.end_time}}</p>
+						<h2>{{entry.speaker}}</h2>
+						<p>{{entry.description}}</p>
+						<a href="{{entry.files}}">Related Files</a><br/>
+					</div>
+					<div ng-click="vm.toggleItem(entry)" class="item-expand-footer">
+						<i ng-class="vm.isItemShown(entry) ? 'ion-ios-minus-outline' : 'ion-ios-plus-outline'"></i>
+						{{ vm.isGroupShown(entry) ? 'Less' : 'More' }}
+					</div>
+					<button class="button button-clear icon ion-ios-upload-outline" ng-click"vm.testFunc()"> test me </button>
+				</ion-item>					
+			</ion-list>
+	</ion-content>		
 </ion-view>
