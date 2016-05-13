@@ -1,29 +1,32 @@
 (function() {
 	'use strict';
-
+	
 	angular
-		.module('supermodular.wordpress')
-		.controller('WordpressArticleController', WordpressArticleController);
-
+	.module('supermodular.wordpress')
+	.controller('WordpressArticleController', WordpressArticleController);
+	
 	WordpressArticleController.$inject = [
-		'$stateParams', '$ionicActionSheet', '$cordovaSocialSharing', 'wordpressService'];
-
+	'$stateParams', '$ionicActionSheet', '$cordovaSocialSharing', 'wordpressService'];
+	
 	/* @ngInject */
 	function WordpressArticleController($stateParams, $ionicActionSheet, $cordovaSocialSharing, wordpressService) {
 		var articleId = parseInt($stateParams.articleId, 10);
-
 		var vm = angular.extend(this, {
 			article: null,
-			share: share
+			shownItem : null,
+			share: share,
+			isItemShown : isItemShown,
+			toggleItem : toggleItem,
+			testFunc : testFunc,
 		});
-
+		
 		function activate() {
 			loadArticle();
 		}
 		activate();
-
+		
 		// ********************************************************************
-
+		
 		function share() {
 			$ionicActionSheet.show({
 				buttons: [
@@ -37,63 +40,76 @@
 				buttonClicked: function(index) {
 					switch(index) {
 						case 0:
-							shareToFacebook();
-							break;
+						shareToFacebook();
+						break;
 						case 1:
-							shareToTwitter();
-							break;
+						shareToTwitter();
+						break;
 						case 2:
-							shareViaEmail();
-							break;
+						shareViaEmail();
+						break;
 						case 3:
-							shareNative();
-							break;
+						shareNative();
+						break;
 					}
 					return true;
 				}
 			});
 		}
-
+		
 		function shareNative() {
 			var message = vm.article.title;
 			var subject = vm.article.title;
-
+			
 			$cordovaSocialSharing
-				.share(message, subject, null, vm.article.url);
+			.share(message, subject, null, vm.article.url);
 		}
-
+		
 		function shareToFacebook() {
 			var message = vm.article.title;
 			var image = vm.article.image;
 			var link = vm.article.url;
-
+			
 			$cordovaSocialSharing
-				.shareViaFacebook(message, image, link);
+			.shareViaFacebook(message, image, link);
 		}
-
+		
 		function shareToTwitter() {
 			var message = vm.article.title + ' ' + vm.article.url;
 			var image = vm.article.image;
 			var link = vm.article.url;
-
+			
 			$cordovaSocialSharing
-				.shareViaTwitter(message, image, link);
+			.shareViaTwitter(message, image, link);
 		}
-
+		
 		function shareViaEmail() {
 			var message = 'Read more about "' + vm.article.title + '" ' + vm.article.url;
 			var subject = vm.article.title;
-
 			$cordovaSocialSharing
-				.shareViaEmail(message, subject, [], [], [], null);
+			.shareViaEmail(message, subject, [], [], [], null);
 		}
-
+		
 		function loadArticle() {
 			wordpressService.getArticle(articleId)
-				.then(function(article) {
-					vm.article = article;
-					console.log(article);
-				});
+			.then(function(article) {
+				vm.article = article;
+			});
 		}
+		function toggleItem(entry) {
+			if (isItemShown(entry)) {
+				vm.shownItem = null;
+				} else {
+				vm.shownItem = entry;
+			}
+		};
+		function isItemShown(entry) {
+			return vm.shownItem === entry;
+		};
+		
+		function testFunc(){
+			console.log('I ran');
+		}
+		
 	}
 })();
