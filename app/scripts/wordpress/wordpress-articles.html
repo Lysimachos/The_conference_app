@@ -1,40 +1,56 @@
 <ion-view view-title="Articles">
 	<ion-content>
 		<div ng-repeat="article in vm.articles">
-			<div class="list card">
-				<div class="item item-divider">
-					<div class="row">
-   					<div class="col text-left">
-                            <h2>{{article.location}}</h2>
-							<p>{{article.date_start.substring(0,4)}} - </p>
-                            <p>{{article.date_end}}</p>
-						</div>
+			
+        <div class="list card">
+            <!-- <div class="item item-divider">-->
+            <div class="column">
+				    <div class="row">
+                   
                         
+   					<div class="col text-left">
+                        
+                        <div class="d-mainscreen-left">
+                            <div style="letter-spacing: 1px;">
+                            <b>{{article.location}}</b> <br/>
+                            </div>
+                            {{article.date_start}} - <br/>
+                            {{article.date_end}}
+                        </div>
+                        </div>
                         
                         <div class="col text-center">
-						        {{article.organizer}}
+                            
+                            <div class="d-centered-wraped-text">
+						       <b> {{article.organizer}}</b>
+                                
+                            </div>  
+                            
+                            <br/>
+                                                        
+                            <div id="d-mainscreen-tittle">
+                            {{article.title}}
+                            </div>
+                        </div>
                         
-                        <div class="d-centered-wraped-text">
-                                <h1>{{article.title}}</h1>
-                            </div>
-                            
-                            
+                        
 						<div class="col text-right">
-							<button class="button button-icon icon ion-android-star-outline"> <!--ng-click="addFavorite(institution)" future click function-->
+                             <div class="d-mainscreen-right">
+							<button class="button button-icon icon ion-android-star-outline"> 
+                        <!--ng-click="addFavorite(institution)" future click function-->
 							</button>
-                            </div>
-						</div>
-					</div>
-  			</div>
-                    
+                        </div>
+                        </div>
+                    <!--</div>-->
+  			   </div>
 
 				<div class="item item-body" ng-click="vm.navigate(article.id)">
-					<img ng-src="{{article.logo}}">
-        
+					<img ng-src="{{article.logo}}">        
 					<p>{{article.about | limitTo: 180 }}{{article.about.length > 120 ? '...' : ''}}</p>
 				</div>
-			</div>
-		</div>
-
+                
+            </div>
+            </div>
+            </div>
 	</ion-content>
 </ion-view>
