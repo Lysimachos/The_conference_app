@@ -3,12 +3,14 @@
 	
 	angular
 	.module('supermodular.wordpress')
-	.factory('wordpressService', wordpressService);
-	
-	wordpressService.$inject = ['$http', '$q', '_', 'htmlToPlainText'];
+	.factory('db', [function() {
+		return new Firebase('https://business-directory.firebaseio.com/');
+	}])
+	.factory('wordpressService', wordpressService);	
+	wordpressService.$inject = ['$http', '$q', '_', 'htmlToPlainText', '$firebaseArray', '$firebaseObject'];
 	
 	/* @ngInject */
-	function wordpressService($http, $q, _, htmlToPlainText) {
+	function wordpressService($http, $q, _, htmlToPlainText, $firebaseArray, $firebaseObject) {
 		var url = 'http://demo.titaniumtemplates.com/wordpress/?json=1';
 		var articles = [];
 		var example_json=[{
@@ -56,7 +58,6 @@
 			getArticle: getArticle
 		};
 		return service;
-		
 		////////////////
 		
 		function getArticles() {
