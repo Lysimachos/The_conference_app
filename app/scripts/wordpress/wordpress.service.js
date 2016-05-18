@@ -15,7 +15,7 @@
 		var articles = [];
 		var example_json=[{
 			id: 1234,
-			title: 'Advanced Fluid Statics',
+			title: 'Advanced Fluid Statics kai arkoudes kai oti allo thes gia na gemisei tin seira',
 			logo: 'http://innochain.net/wp-content/uploads/102_01.jpg',
 			date_start: '18/5/2016',
 			date_end: '18/5/2016',
