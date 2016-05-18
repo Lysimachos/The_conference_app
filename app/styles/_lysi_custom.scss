@@ -6,20 +6,18 @@ line-height: 11px;
 }
 
 .d-centered-wraped-text {
-letter-spacing: 1px;
-vertical-align: middle;
+letter-spacing: 1.5px;
+    position:relative;
+    up:10%;
 }
 
 #d-mainscreen-tittle {
-
-vertical-align: text-bottom;
-    position: relative;
-    right: 100%;
-    width: 300%;
+letter-spacing: 1.5px;
+white-space:normal;
+text-align:justify;
 }
 
-.d-mainscreen-right {
-    float:right;
+#d-button{
 position:relative;
-bottom: 10%;
+bottom:15%;
 }
