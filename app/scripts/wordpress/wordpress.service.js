@@ -4,13 +4,13 @@
 	angular
 	.module('supermodular.wordpress')
 	.factory('db', [function() {
-		return new Firebase('https://business-directory.firebaseio.com/');
+		return new Firebase('https://sizzling-torch-5385.firebaseio.com/');
 	}])
 	.factory('wordpressService', wordpressService);	
-	wordpressService.$inject = ['$http', '$q', '_', 'htmlToPlainText', '$firebaseArray', '$firebaseObject'];
+	wordpressService.$inject = ['db','$http', '$q', '_', 'htmlToPlainText', '$firebaseArray', '$firebaseObject'];
 	
 	/* @ngInject */
-	function wordpressService($http, $q, _, htmlToPlainText, $firebaseArray, $firebaseObject) {
+	function wordpressService(db,$http, $q, _, htmlToPlainText, $firebaseArray, $firebaseObject) {
 		var url = 'http://demo.titaniumtemplates.com/wordpress/?json=1';
 		var articles = [];
 		var example_json=[{
@@ -61,6 +61,8 @@
 		////////////////
 		
 		function getArticles() {
+			var query = db.child('sizzling-torch-5385');
+			return $firebaseArray(db).$loaded().then(initArray);
 			return $http.get(url)
 			.then(function(response) {
 				articles=example_json;
@@ -80,6 +82,16 @@
 				});			
 				return deferred.promise;
 			}
+		}
+		
+		function initItem(item) {
+			return angular.extend({}, item, {
+				guid: item.$id
+			});
+		}
+		
+		function initArray(array) {
+			return array; // _.map(array, initItem);
 		}
 	}
 })();
