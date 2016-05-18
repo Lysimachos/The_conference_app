@@ -63,12 +63,12 @@
 		function getArticles() {
 			var query = db.child('sizzling-torch-5385');
 			return $firebaseArray(db).$loaded().then(initArray);
-			return $http.get(url)
-			.then(function(response) {
+			/*return $http.get(url)
+				.then(function(response) {
 				articles=example_json;
 				return example_json;
-			});
-			
+				});
+				*/
 		}
 		
 		function getArticle(articleId) {
@@ -91,6 +91,7 @@
 		}
 		
 		function initArray(array) {
+			articles=array;
 			return array; // _.map(array, initItem);
 		}
 	}
