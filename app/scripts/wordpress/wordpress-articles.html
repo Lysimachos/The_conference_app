@@ -1,6 +1,7 @@
 <ion-view view-title="Articles">
 	<ion-content>
 		<div ng-repeat="article in vm.articles">
+<<<<<<< HEAD
 		
    
         <div class="list card">
@@ -59,5 +60,44 @@
                 
             </div>
             
+=======
+			<div class="list card">
+				<!-- div class="item item-divider"-->
+				<div class="column">
+				    <div class="row">
+						<div class="col text-left">
+							<div class="d-mainscreen-left">
+								<div style="letter-spacing: 1px;">
+									<b>{{article.location}}</b> <br/>
+								</div>
+								{{article.date_start}} - <br/>
+								{{article.date_end}}
+							</div>
+						</div>
+                        <div class="col text-center">          
+                            <div class="d-centered-wraped-text">
+								<b> {{article.organizer}}</b>              
+							</div>  
+							<br/>							
+                            <div id="d-mainscreen-tittle">
+								{{article.title}}
+							</div>
+						</div>
+						<div class="col text-right">
+							<div class="d-mainscreen-right">
+								<button class="button button-icon icon ion-android-star-outline"
+								ng-click="vm.addFavorite(article.id)"></button>
+							</div>
+						</div>
+						<!--</div>-->
+					</div>
+					<div class="item item-body" ng-click="vm.navigate(article.id)">
+						<img ng-src="{{article.logo}}">        
+						<p>{{article.about | limitTo: 180 }}{{article.about.length > 120 ? '...' : ''}}</p>
+					</div>		
+				</div>
+			</div>
+		</div>
+>>>>>>> b0fb37c19bba73640199989ab39a555b1725e731
 	</ion-content>
 </ion-view>

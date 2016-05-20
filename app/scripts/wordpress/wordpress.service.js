@@ -3,12 +3,14 @@
 	
 	angular
 	.module('supermodular.wordpress')
-	.factory('wordpressService', wordpressService);
-	
-	wordpressService.$inject = ['$http', '$q', '_', 'htmlToPlainText'];
+	.factory('db', [function() {
+		return new Firebase('https://sizzling-torch-5385.firebaseio.com/');
+	}])
+	.factory('wordpressService', wordpressService);	
+	wordpressService.$inject = ['db','$http', '$q', '_', 'htmlToPlainText', '$firebaseArray', '$firebaseObject'];
 	
 	/* @ngInject */
-	function wordpressService($http, $q, _, htmlToPlainText) {
+	function wordpressService(db,$http, $q, _, htmlToPlainText, $firebaseArray, $firebaseObject) {
 		var url = 'http://demo.titaniumtemplates.com/wordpress/?json=1';
 		var articles = [];
 		var example_json=[{
@@ -56,16 +58,17 @@
 			getArticle: getArticle
 		};
 		return service;
-		
 		////////////////
 		
 		function getArticles() {
-			return $http.get(url)
-			.then(function(response) {
+			var query = db.child('sizzling-torch-5385');
+			return $firebaseArray(db).$loaded().then(initArray);
+			/*return $http.get(url)
+				.then(function(response) {
 				articles=example_json;
 				return example_json;
-			});
-			
+				});
+				*/
 		}
 		
 		function getArticle(articleId) {
@@ -79,6 +82,17 @@
 				});			
 				return deferred.promise;
 			}
+		}
+		
+		function initItem(item) {
+			return angular.extend({}, item, {
+				guid: item.$id
+			});
+		}
+		
+		function initArray(array) {
+			articles=array;
+			return array; // _.map(array, initItem);
 		}
 	}
 })();
