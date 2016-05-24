@@ -8,6 +8,7 @@ angular.module('starter', [
 	'ionic',
 	'ionic.service.core',
 	'config',
+	'firebase',
 	'ionic.service.core',
 	'ionic.service.push',
 	'supermodular.common',
