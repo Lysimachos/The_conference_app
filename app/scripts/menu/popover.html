@@ -1,14 +1,17 @@
 <ion-popover-view>
    <ion-header-bar>
        <h1 class = "title">Search box</h1>
-
    </ion-header-bar>
-
    <ion-content>
      <div class="item item-input-inset">
        <label class="item-input-wrapper">
-         <input type="text" placeholder="Search">
+         <input type="text" placeholder="'city'...etc">
        </label>
+     </div>
+     <div>
+       <ionic-datepicker>
+         <button class="button icon-left ion-android-calendar button-block button-positive" ng-click="openDatePicker()"> {{ipObj1.inputDate | date:'dd - MMMM - yyyy'}}  </button>
+       </ionic-datepicker>
      </div>
    </ion-content>
 </ion-popover-view>

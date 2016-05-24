@@ -20,7 +20,8 @@ angular.module('starter', [
 	'supermodular.native-scrolling',
 	'supermodular.new-slide-box',
 	'gMaps',
-	'ngCordova'
+	'ngCordova',
+	'ionic-datepicker'
 ])
 
 .value('_', window._)

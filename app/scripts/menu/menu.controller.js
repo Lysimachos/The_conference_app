@@ -5,11 +5,12 @@
 		.module('supermodular.menu')
 		.controller('MenuController', MenuController);
 
-	MenuController.$inject = ['$scope', '$ionicPopover'];
+	MenuController.$inject = ['$scope', '$ionicPopover','ionicDatePicker'];
 
 	/* @ngInject */
-	function MenuController($scope, $ionicPopover) {
+	function MenuController($scope, $ionicPopover,ionicDatePicker) {
 
+		/*pop over code*/
 		$ionicPopover.fromTemplateUrl('scripts/menu/popover.html', {
       scope: $scope
    }).then(function(popover) {
@@ -38,6 +39,26 @@
    $scope.$on('popover.removed', function() {
       // Execute action
    });
+
+	 $scope.ipObj1 = {
+		callback: function (val) {  //Mandatory
+			console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+		},
+		from: new Date(2012, 1, 1), //Optional
+		to: new Date(2016, 10, 30), //Optional
+		inputDate: new Date(),      //Optional
+		mondayFirst: true,          //Optional
+		closeOnSelect: false,       //Optional
+		templateType: 'popup'       //Optional
+	 };
+	 $scope.openDatePicker = function(){
+		 var ipObj1=$scope.ipObj1;
+		 ionicDatePicker.openDatePicker(ipObj1);
+	 };
+
+
+
+	 //
 
 	}
 })();
