@@ -40,9 +40,10 @@
       // Execute action
    });
 
+	 $scope.inputVal={text: ''};
 	 $scope.ipObj1 = {
 		callback: function (val) {  //Mandatory
-			console.log('Return value from the datepicker popup is : ' + val, new Date(val));
+			$scope.ipObj1.inputDate = val; //TODO html button update bug
 		},
 		from: new Date(2012, 1, 1), //Optional
 		to: new Date(2016, 10, 30), //Optional
@@ -52,8 +53,11 @@
 		templateType: 'popup'       //Optional
 	 };
 	 $scope.openDatePicker = function(){
-		 var ipObj1=$scope.ipObj1;
-		 ionicDatePicker.openDatePicker(ipObj1);
+		 ionicDatePicker.openDatePicker($scope.ipObj1);
+	 };
+	 $scope.passSearchParameters = function(){
+		 console.log('Return value from the datepicker popup is : ' + new Date($scope.ipObj1.inputDate));
+		 console.log($scope.inputVal.text);
 	 };
 
 

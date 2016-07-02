@@ -5,13 +5,23 @@
    <ion-content>
      <div class="item item-input-inset">
        <label class="item-input-wrapper">
-         <input type="text" placeholder="'city'...etc">
+         <input type="text" placeholder="'city'...etc" ng-model="inputVal.text">
        </label>
      </div>
      <div>
        <ionic-datepicker>
-         <button class="button icon-left ion-android-calendar button-block button-positive" ng-click="openDatePicker()"> {{ipObj1.inputDate | date:'dd - MMMM - yyyy'}}  </button>
+         <button class="button icon-left ion-android-calendar
+         button-block button-positive" ng-click="openDatePicker()">
+          {{ipObj1.inputDate | date:'dd - MMMM - yyyy'}}
+        </button>
        </ionic-datepicker>
      </div>
+     <div>
+       <button class="button icon-right ion-android-search
+       button-block button-positive" ng-click="passSearchParameters()">
+        Search...
+      </button>
+     </div>
+
    </ion-content>
 </ion-popover-view>
