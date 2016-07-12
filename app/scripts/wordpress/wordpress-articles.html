@@ -34,46 +34,10 @@
 					{{article.title}}
 				</div>
 			</div>
-		</div>	
+		</div>
 		<div class="item item-body" ng-click="vm.navigate(article.id)">
 			<img ng-src="{{article.logo}}">
 			<p>{{article.about | limitTo: 180 }}{{article.about.length > 120 ? '...' : ''}}</p>
-		</div>
-	</div>
-	<div class="list card">
-		<!-- div class="item item-divider"-->
-		<div class="column">
-			<div class="row">
-				<div class="col text-left">
-					<div class="d-mainscreen-left">
-						<div style="letter-spacing: 1px;">
-							<b>{{article.location}}</b> <br/>
-						</div>
-						{{article.date_start}} - <br/>
-						{{article.date_end}}
-					</div>
-				</div>
-				<div class="col text-center">
-					<div class="d-centered-wraped-text">
-						<b> {{article.organizer}}</b>
-					</div>
-					<br/>
-					<div id="d-mainscreen-tittle">
-						{{article.title}}
-					</div>
-				</div>
-				<div class="col text-right">
-					<div class="d-mainscreen-right">
-						<button class="button button-icon icon ion-android-star-outline"
-						ng-click="vm.addFavorite(article.id)"></button>
-					</div>
-				</div>
-				<!--</div>-->
-			</div>
-			<div class="item item-body" ng-click="vm.navigate(article.id)">
-				<img ng-src="{{article.logo}}">
-				<p>{{article.about | limitTo: 180 }}{{article.about.length > 120 ? '...' : ''}}</p>
-			</div>
 		</div>
 	</div>
 </div>
