@@ -1,18 +1,19 @@
 (function() {
 	'use strict';
-	
+
 	angular
 	.module('supermodular.wordpress')
 	.factory('db', [function() {
 		return new Firebase('https://sizzling-torch-5385.firebaseio.com/');
 	}])
-	.factory('wordpressService', wordpressService);	
+	.factory('wordpressService', wordpressService);
 	wordpressService.$inject = ['db','$http', '$q', '_', 'htmlToPlainText', '$firebaseArray', '$firebaseObject'];
-	
+
 	/* @ngInject */
 	function wordpressService(db,$http, $q, _, htmlToPlainText, $firebaseArray, $firebaseObject) {
 		var url = 'http://demo.titaniumtemplates.com/wordpress/?json=1';
 		var articles = [];
+		var favorites = [];
 		var example_json=[{
 			id: 1234,
 			title: 'Advanced Fluid Statics kai arkoudes kai oti allo thes gia na gemisei tin seira',
@@ -38,7 +39,7 @@
 					file: 'url',
 					vanue: 'Loby A',
 					image: 'https://www.newton.ac.uk/files/covers/968361.jpg',
-				},	
+				},
 				2: {
 					sub_id: 2,
 					start_time: '13:00',
@@ -50,16 +51,19 @@
 					file: 'url',
 					vanue: 'Loby A',
 					image: 'http://feelgrafix.com/data_images/out/13/877592-random-wallpaper.jpg',
-				},	
-			},				
+				},
+			},
 		},];
 		var service = {
 			getArticles: getArticles,
-			getArticle: getArticle
+			getArticle: getArticle,
+			addFavorites: addFavorites,
+			getFavorites: getFavorites
+
 		};
 		return service;
 		////////////////
-		
+
 		function getArticles() {
 			var query = db.child('sizzling-torch-5385');
 			return $firebaseArray(db).$loaded().then(initArray);
@@ -70,7 +74,7 @@
 				});
 				*/
 		}
-		
+
 		function getArticle(articleId) {
 			if (articles.length) {
 				return $q.when(_.find(articles, 'id', articleId));
@@ -79,20 +83,28 @@
 				getArticles()
 				.then(function() {
 					deferred.resolve(_.find(articles, 'id', articleId));
-				});			
+				});
 				return deferred.promise;
 			}
 		}
-		
+
 		function initItem(item) {
 			return angular.extend({}, item, {
 				guid: item.$id
 			});
 		}
-		
+
 		function initArray(array) {
 			articles=array;
 			return array; // _.map(array, initItem);
+		}
+
+
+		function addFavorites(article){
+			favorites.push(article);
+		}
+		function getFavorites(){
+			return favorites;
 		}
 	}
 })();

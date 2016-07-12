@@ -1,6 +1,6 @@
 (function() {
 	'use strict';
-	
+
 	angular
 	.module('supermodular.wordpress', [
 		'ionic',
@@ -23,6 +23,15 @@
 				'menuContent': {
 					templateUrl: 'scripts/wordpress/wordpress-article.html',
 					controller: 'WordpressArticleController as vm'
+				}
+			}
+		})
+		.state('app.favorites', {
+			url: '/favorites',
+			views: {
+				'menuContent': {
+					templateUrl: 'scripts/wordpress/favorites.html',
+					controller: 'FavoritesController as vm'
 				}
 			}
 		});
