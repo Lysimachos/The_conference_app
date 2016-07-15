@@ -60,6 +60,11 @@
 		 console.log($scope.inputVal.text);
 	 };
 
+	 $scope.broadcastToChildren = function(){
+		 //$scope.$emit("rmFav");
+		 console.log($scope.$parent);
+	 };
+
 
 
 	 //

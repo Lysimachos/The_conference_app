@@ -5,18 +5,21 @@
 	.module('supermodular.wordpress')
 	.controller('FavoritesController', FavoritesController);
 
-	FavoritesController.$inject = ['$state', 'wordpressService'];
+	FavoritesController.$inject = ['$rootScope', '$state', 'wordpressService'];
 
 	/* @ngInject */
-	function FavoritesController($state, wordpressService) {
+	function FavoritesController($rootScope, $state, wordpressService) {
 		var vm = angular.extend(this, {
-			articles: new Array(),
+			articles: [],
 			navigate: navigate
 		});
 
     // ***************************************************
     function activate() {
+			//$scope.passSearchParameters();
 			getFavorites();
+      $rootScope.$on("rmFav", function(event, data) { getFavorites(); } );
+			$rootScope.$on("addFav", function(event, data) { getFavorites(); } );
 		}
 		activate();
 
@@ -25,7 +28,7 @@
 		}
 
     function getFavorites() {
-			vm.articles = wordpressService.getFavorites();      
+			vm.articles = wordpressService.getFavorites();
 		}
 
 	}

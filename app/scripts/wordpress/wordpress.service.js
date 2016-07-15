@@ -7,10 +7,10 @@
 		return new Firebase('https://sizzling-torch-5385.firebaseio.com/');
 	}])
 	.factory('wordpressService', wordpressService);
-	wordpressService.$inject = ['db','$http', '$q', '_', 'htmlToPlainText', '$firebaseArray', '$firebaseObject'];
+	wordpressService.$inject = ['db', '$http', '$q', '_', 'htmlToPlainText', '$firebaseArray', '$firebaseObject'];
 
 	/* @ngInject */
-	function wordpressService(db,$http, $q, _, htmlToPlainText, $firebaseArray, $firebaseObject) {
+	function wordpressService(db, $http, $q, _, htmlToPlainText, $firebaseArray, $firebaseObject) {
 		var url = 'http://demo.titaniumtemplates.com/wordpress/?json=1';
 		var articles = [];
 		var favorites = [];
@@ -58,8 +58,8 @@
 			getArticles: getArticles,
 			getArticle: getArticle,
 			addFavorites: addFavorites,
+			removeFavorite: removeFavorite,
 			getFavorites: getFavorites
-
 		};
 		return service;
 		////////////////
@@ -102,6 +102,9 @@
 
 		function addFavorites(article){
 			favorites.push(article);
+		}
+		function removeFavorite(article){
+			favorites = _.without(favorites, article);			
 		}
 		function getFavorites(){
 			return favorites;
