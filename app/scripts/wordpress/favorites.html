@@ -2,7 +2,7 @@
 	<ion-content>
 		<div ng-if="vm.articles.length > 0">
 			<div ng-repeat="article in vm.articles">
-				<div class="list card">
+				<div on-swipe-left="vm.onSwipeLeft(article)" class="list card">
 					<div class="item item-divider">
 						<div class="column">
 							<div class="row">

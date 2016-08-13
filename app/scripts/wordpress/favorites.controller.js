@@ -11,7 +11,8 @@
 	function FavoritesController($rootScope, $state, wordpressService) {
 		var vm = angular.extend(this, {
 			articles: [],
-			navigate: navigate
+			navigate: navigate,
+			onSwipeLeft: onSwipeLeft
 		});
 
     // ***************************************************
@@ -29,6 +30,11 @@
 
     function getFavorites() {
 			vm.articles = wordpressService.getFavorites();
+		}
+
+		function onSwipeLeft(article){
+			wordpressService.removeFavorite(article);
+			getFavorites();
 		}
 
 	}

@@ -23,8 +23,8 @@
 							<div class="col text-right">
 								<div id="d-button">
 									<button class="button button-icon icon ion-android-star-outline"
-									ng-click="!vm.isFavorite ? vm.addFavorite(article) : vm.removeFavorite(article)"
-									ng-class="vm.isFavorite ? 'ion-android-star' : 'ion-android-star-outline'">
+									ng-click="!vm.isFavorite(article) ? vm.addFavorite(article) : vm.removeFavorite(article)"
+									ng-class="vm.isFavorite(article) ? 'ion-android-star' : 'ion-android-star-outline'">
 								</button>
 							</div>
 						</div>

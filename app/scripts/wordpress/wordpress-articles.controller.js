@@ -5,16 +5,16 @@
 	.module('supermodular.wordpress')
 	.controller('WordpressArticlesController', WordpressArticlesController);
 
-	WordpressArticlesController.$inject = ['$rootScope', '$state', 'wordpressService'];
+	WordpressArticlesController.$inject = ['$scope', '$rootScope', '$state', 'wordpressService'];
 
 	/* @ngInject */
-	function WordpressArticlesController($rootScope, $state, wordpressService) {
+	function WordpressArticlesController($scope, $rootScope, $state, wordpressService) {
 		var vm = angular.extend(this, {
 			articles: [],
 			navigate: navigate,
 			addFavorite: addFavorite,
 			removeFavorite: removeFavorite,
-			isFavorite: false
+			isFavorite: isFavorite
 		});
 
 		function activate() {
@@ -35,9 +35,19 @@
 			$state.go('app.wordpress-article', { articleId: articleId });
 		}
 
+		function isFavorite(/*article*/){
+			console.log('articles');
+			/* scaffold
+			wordpressService.isFavorite(article);
+			*/
+		}
+
+
+
 		function addFavorite(article){
-			vm.isFavorite = (!vm.isFavorite);
+			//vm.isFavorite = (!vm.isFavorite);
 			wordpressService.addFavorites(article);
+			//$scope.$broadcast('addFav');
 			$rootScope.$broadcast('addFav');
 		}
 

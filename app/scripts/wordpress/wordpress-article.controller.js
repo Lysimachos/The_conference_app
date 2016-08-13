@@ -1,15 +1,14 @@
 (function() {
 	'use strict';
-	
+
 	angular
 	.module('supermodular.wordpress')
 	.controller('WordpressArticleController', WordpressArticleController);
-	
-	WordpressArticleController.$inject = [
-	'$stateParams', '$ionicActionSheet', '$cordovaSocialSharing', 'wordpressService'];
-	
+
+	WordpressArticleController.$inject = ['$scope', '$stateParams', '$ionicActionSheet', '$cordovaSocialSharing', 'wordpressService'];
+
 	/* @ngInject */
-	function WordpressArticleController($stateParams, $ionicActionSheet, $cordovaSocialSharing, wordpressService) {
+	function WordpressArticleController($scope, $stateParams, $ionicActionSheet, $cordovaSocialSharing, wordpressService) {
 		var articleId = parseInt($stateParams.articleId, 10);
 		var vm = angular.extend(this, {
 			article: null,
@@ -18,15 +17,32 @@
 			isItemShown : isItemShown,
 			toggleItem : toggleItem,
 			testFunc : testFunc,
+			isFav: false
 		});
-		
+
 		function activate() {
+			//$scope.$on("addFav", function(event, data) { toggleFavorite(); } );
+			//$scope.$on("isFav", function(event, data) { console.log('mpjka toogle'); } );
 			loadArticle();
 		}
 		activate();
-		
+
 		// ********************************************************************
-		
+
+
+		/* delete
+		function toggleFavorite(){
+			console.log('mpjka toogle');
+			vm.isFav = (!vm.isFav);
+
+		} */
+
+		/* delete
+		function isFavorite(){
+			console.log(vm.isFav);
+			return vm.isFav;
+		} */
+
 		function share() {
 			$ionicActionSheet.show({
 				buttons: [
@@ -56,40 +72,40 @@
 				}
 			});
 		}
-		
+
 		function shareNative() {
 			var message = vm.article.title;
 			var subject = vm.article.title;
-			
+
 			$cordovaSocialSharing
 			.share(message, subject, null, vm.article.url);
 		}
-		
+
 		function shareToFacebook() {
 			var message = vm.article.title;
 			var image = vm.article.image;
 			var link = vm.article.url;
-			
+
 			$cordovaSocialSharing
 			.shareViaFacebook(message, image, link);
 		}
-		
+
 		function shareToTwitter() {
 			var message = vm.article.title + ' ' + vm.article.url;
 			var image = vm.article.image;
 			var link = vm.article.url;
-			
+
 			$cordovaSocialSharing
 			.shareViaTwitter(message, image, link);
 		}
-		
+
 		function shareViaEmail() {
 			var message = 'Read more about "' + vm.article.title + '" ' + vm.article.url;
 			var subject = vm.article.title;
 			$cordovaSocialSharing
 			.shareViaEmail(message, subject, [], [], [], null);
 		}
-		
+
 		function loadArticle() {
 			wordpressService.getArticle(articleId)
 			.then(function(article) {
@@ -106,10 +122,10 @@
 		function isItemShown(entry) {
 			return vm.shownItem === entry;
 		};
-		
+
 		function testFunc(){
 			console.log('I ran');
 		}
-		
+
 	}
 })();

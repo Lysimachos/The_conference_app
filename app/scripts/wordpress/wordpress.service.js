@@ -103,11 +103,19 @@
 		function addFavorites(article){
 			favorites.push(article);
 		}
+
 		function removeFavorite(article){
-			favorites = _.without(favorites, article);			
+			favorites = _.without(favorites, article);
 		}
+
 		function getFavorites(){
 			return favorites;
 		}
+
+		/* scaffold
+		function isFavorite(article){
+			return _.exist(favorites, article);
+		}
+		*/
 	}
 })();
