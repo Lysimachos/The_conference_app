@@ -1,7 +1,7 @@
 <ion-view view-title="Articles">
 	<ion-content>
-
 		<div ng-repeat="article in vm.articles">
+<<<<<<< HEAD
 			<div class="list card">
 				<div class="item item-divider">
 					<div class="column">
@@ -41,6 +41,58 @@
 		</div>
 	</div>
 </div>
+=======
+ 
+        <div class="list card">
+            <div class="item item-divider">
+                             
+                <div class="column">  
+                <div class="row">
+                               
+   					<div class="col text-left">
+                        <div class="d-mainscreen-left">
+                            <div style="letter-spacing: 1px;">
+                            <b>{{article.location}}</b> <br/>
+                            </div>
+                            {{article.date_start}} - <br/>
+                            {{article.date_end}}
+                        </div>
+                    </div>
+                        
+                    <div class="col text-center">
+                        <div class="d-centered-wraped-text">
+						       <b> {{article.organizer}}</b>
+                        </div>  
+                    </div>
+                           
+                    
+				    <div class="col text-right">
+                        <div id="d-button">
+							<button class="button button-icon icon ion-android-star-outline"> 
+                        <!--ng-click="addFavorite(institution)" future click function-->
+							</button>
+                        </div>
+                    </div>
+    
+                    </div>
+                    </div>
+                
+                    
+                    <div id="d-mainscreen-tittle">
+                     {{article.title}}
+                    </div>
+                         
+               </div>
+  			   </div>
+                           
+               <div class="item item-body" ng-click="vm.navigate(article.id)">
+					<img ng-src="{{article.logo}}">        
+					<p>{{article.about | limitTo: 180 }}{{article.about.length > 120 ? '...' : ''}}</p>
+               </div>
+                
 
-</ion-content>
+>>>>>>> b1aa4d84eb27a0a14609b269f923e96254b43a89
+
+            </div>
+	</ion-content>
 </ion-view>

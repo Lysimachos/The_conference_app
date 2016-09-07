@@ -4,7 +4,7 @@
 	angular
 	.module('supermodular.wordpress')
 	.factory('db', [function() {
-		return new Firebase('https://sizzling-torch-5385.firebaseio.com/');
+		return new Firebase('https://converse-3fa91.firebaseio.com/');
 	}])
 	.factory('wordpressService', wordpressService);
 	wordpressService.$inject = ['db', '$http', '$q', '_', 'htmlToPlainText', '$firebaseArray', '$firebaseObject'];
