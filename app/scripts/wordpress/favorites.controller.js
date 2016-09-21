@@ -12,7 +12,8 @@
 		var vm = angular.extend(this, {
 			articles: [],
 			navigate: navigate,
-			onSwipeLeft: onSwipeLeft
+			onSwipeLeft: onSwipeLeft,
+			onSwipeRight: onSwipeRight
 		});
 
     // ***************************************************
@@ -33,6 +34,11 @@
 		}
 
 		function onSwipeLeft(article){
+			wordpressService.removeFavorite(article);
+			getFavorites();
+		}
+
+		function onSwipeRight(article){
 			wordpressService.removeFavorite(article);
 			getFavorites();
 		}
