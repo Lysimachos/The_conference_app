@@ -115,7 +115,6 @@
 
 
     function isFavorite(article) {
-      console.log(favorites + ' , ' + _.contains(favorites, article));
       return _.contains(favorites, article);
     }
 

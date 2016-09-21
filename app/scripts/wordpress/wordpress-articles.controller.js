@@ -38,20 +38,16 @@
     }
 
     function isFavorite(article) {
-      wordpressService.isFavorite(article);
+      return wordpressService.isFavorite(article);
     }
 
-
-
     function addFavorite(article) {
-      console.log(article.title + ' is added');
       wordpressService.addFavorites(article);
       //$scope.$broadcast('addFav');
       $rootScope.$broadcast('addFav');
     }
 
     function removeFavorite(article) {
-      console.log(article.title + ' is removed');
       wordpressService.removeFavorite(article);
       $rootScope.$broadcast('rmFav');
     }
