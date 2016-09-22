@@ -34,6 +34,15 @@
 					controller: 'FavoritesController as vm'
 				}
 			}
+		})
+		.state('app.search', {
+			url: '/search',
+			views: {
+				'menuContent': {
+					templateUrl: 'scripts/wordpress/search.html',
+					controller: 'SearchController as vm'
+				}
+			}
 		});
 	});
 })();

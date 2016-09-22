@@ -14,6 +14,7 @@
     var url = 'http://demo.titaniumtemplates.com/wordpress/?json=1';
     var articles = [];
     var favorites = [];
+    var searchResults = [];
     var example_json = [{
       id: 1234,
       title: 'Advanced Fluid Statics kai arkoudes kai oti allo thes gia na gemisei tin seira',
@@ -60,7 +61,8 @@
       addFavorites: addFavorites,
       removeFavorite: removeFavorite,
       getFavorites: getFavorites,
-      isFavorite: isFavorite
+      isFavorite: isFavorite,
+      getSearchResults: getSearchResults
     };
     return service;
     ////////////////
@@ -116,6 +118,10 @@
 
     function isFavorite(article) {
       return _.contains(favorites, article);
+    }
+
+    function getSearchResults(){
+      return searchResults;
     }
 
   }

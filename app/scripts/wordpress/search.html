@@ -1,0 +1,42 @@
+<ion-view view-title="Search Results">
+  <ion-content>
+    <div ng-if="vm.articles.length > 0">
+      <div ng-repeat="article in vm.articles">
+        <div class="list card">
+          <div class="item item-divider">
+            <div class="column">
+              <div class="row">
+                <div class="col text-left">
+                  <div class="d-mainscreen-left">
+                    <div style="letter-spacing: 1px;">
+                      <b>{{article.location}}</b> <br/>
+                    </div>
+                    {{article.date_start}} - <br/> {{article.date_end}}
+                  </div>
+                </div>
+                <div class="col text-center">
+                  <div class="d-centered-wraped-text">
+                    <b> {{article.organizer}}</b>
+                  </div>
+                </div>
+                <div class="col text-right">
+                  <div id="d-button">
+                    <button class="button button-icon icon ion-android-star-outline" ng-class=" vm.isFavorite(article) ? 'ion-android-star' : 'ion-android-star-outline'" ng-click=" !vm.isFavorite(article) ? vm.addFavorite(article) : vm.removeFavorite(article)">
+								</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="d-mainscreen-tittle">
+              {{article.title}}
+            </div>
+          </div>
+        </div>
+        <div class="item item-body" ng-click="vm.navigate(article.id)">
+          <img ng-src="{{article.logo}}">
+          <p>{{article.about | limitTo: 180 }}{{article.about.length > 120 ? '...' : ''}}</p>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
