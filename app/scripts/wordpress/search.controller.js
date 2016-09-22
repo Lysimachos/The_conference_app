@@ -23,8 +23,7 @@
     function activate() {
 			//$scope.passSearchParameters();
 			getSearchResults();
-
-			//$rootScope.$on("addFav", function(event, data) { getSearchResults(); } );
+			$rootScope.$on("search", function(event, data) { searchFor(data); } );
 		}
 		activate();
 
@@ -59,6 +58,10 @@
     function removeFavorite(article) {
       wordpressService.removeFavorite(article);
       $rootScope.$broadcast('rmFav');
+    }
+
+    function searchFor(data){
+      wordpressService.searchFor(data);
     }
 
 	}

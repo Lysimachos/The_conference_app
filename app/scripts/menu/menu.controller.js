@@ -58,12 +58,12 @@
 	 $scope.passSearchParameters = function(){
 		 console.log('Return value from the datepicker popup is : ' + new Date($scope.ipObj1.inputDate));
 		 console.log($scope.inputVal.text);
+		 var data = {date: $scope.ipObj1.inputDate, text: $scope.inputVal.text}
+		 $rootScope.$broadcast('search', data);
+		 // callback function then navigate to search view
 	 };
 
-	 $scope.broadcastToChildren = function(){
-		 //$scope.$emit("rmFav");
-		 console.log($scope.$parent);
-	 };
+
 
 
 

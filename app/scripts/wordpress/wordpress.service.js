@@ -124,5 +124,9 @@
       return searchResults;
     }
 
+    function searchFor(data){
+      //  search code...
+    }
+
   }
 })();
