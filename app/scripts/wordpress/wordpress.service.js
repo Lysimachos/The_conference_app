@@ -62,7 +62,8 @@
       removeFavorite: removeFavorite,
       getFavorites: getFavorites,
       isFavorite: isFavorite,
-      getSearchResults: getSearchResults
+      getSearchResults: getSearchResults,
+      searchFor: searchFor
     };
     return service;
     ////////////////
@@ -115,7 +116,6 @@
       return favorites;
     }
 
-
     function isFavorite(article) {
       return _.contains(favorites, article);
     }
@@ -125,7 +125,7 @@
     }
 
     function searchFor(data){
-      //  search code...
+      searchResults = _.filter(articles, function(article){ return _.isMatch(article, {location: data.text}); });      
     }
 
   }

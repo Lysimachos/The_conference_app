@@ -16,14 +16,15 @@
 			onSwipeRight: onSwipeRight,
       addFavorite: addFavorite,
       removeFavorite: removeFavorite,
-      isFavorite: isFavorite
+      isFavorite: isFavorite,
+			searchFor: searchFor
 		});
 
     // ***************************************************
     function activate() {
 			//$scope.passSearchParameters();
 			getSearchResults();
-			$rootScope.$on("search", function(event, data) { searchFor(data); } );
+			$rootScope.$on('search', function(event, data) { searchFor(data); } );
 		}
 		activate();
 
@@ -35,7 +36,7 @@
 			vm.articles = wordpressService.getSearchResults();
 		}
 
-		function onSwipeLeft(article){
+		function onSwipeLeft(article){	//TODO add it in html
 			wordpressService.removeFavorite(article);
 			getSearchResults();
 		}
@@ -60,8 +61,9 @@
       $rootScope.$broadcast('rmFav');
     }
 
-    function searchFor(data){
+    function searchFor(data){			
       wordpressService.searchFor(data);
+			activate();
     }
 
 	}

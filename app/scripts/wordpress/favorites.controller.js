@@ -20,8 +20,8 @@
     function activate() {
 			//$scope.passSearchParameters();
 			getFavorites();
-      $rootScope.$on("rmFav", function(event, data) { getFavorites(); } );
-			$rootScope.$on("addFav", function(event, data) { getFavorites(); } );
+      $rootScope.$on('rmFav', function(event, data) { getFavorites(); } );
+			$rootScope.$on('addFav', function(event, data) { getFavorites(); } );
 		}
 		activate();
 

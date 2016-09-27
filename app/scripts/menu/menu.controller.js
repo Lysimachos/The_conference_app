@@ -5,10 +5,10 @@
 		.module('supermodular.menu')
 		.controller('MenuController', MenuController);
 
-	MenuController.$inject = ['$scope', '$ionicPopover','ionicDatePicker'];
+	MenuController.$inject = ['$state', '$rootScope', '$scope', '$ionicPopover','ionicDatePicker'];
 
 	/* @ngInject */
-	function MenuController($scope, $ionicPopover,ionicDatePicker) {
+	function MenuController($state, $rootScope, $scope, $ionicPopover,ionicDatePicker) {
 
 		/*pop over code*/
 		$ionicPopover.fromTemplateUrl('scripts/menu/popover.html', {
@@ -56,10 +56,8 @@
 		 ionicDatePicker.openDatePicker($scope.ipObj1);
 	 };
 	 $scope.passSearchParameters = function(){
-		 console.log('Return value from the datepicker popup is : ' + new Date($scope.ipObj1.inputDate));
-		 console.log($scope.inputVal.text);
-		 var data = {date: $scope.ipObj1.inputDate, text: $scope.inputVal.text}
-		 $rootScope.$broadcast('search', data);
+		 var data = {date: $scope.ipObj1.inputDate, text: $scope.inputVal.text};
+		 $rootScope.$broadcast('search', data);		 
 		 // callback function then navigate to search view
 	 };
 
