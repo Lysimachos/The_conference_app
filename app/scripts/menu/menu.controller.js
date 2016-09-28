@@ -59,6 +59,10 @@
 		 var data = {date: $scope.ipObj1.inputDate, text: $scope.inputVal.text};
 		 $rootScope.$broadcast('search', data);		 
 		 // callback function then navigate to search view
+		 $scope.closePopover();
+		 $state.go('app.search').then(function(){
+			 $rootScope.$broadcast('search', data);
+		 });
 	 };
 
 
