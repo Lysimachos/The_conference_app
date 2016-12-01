@@ -125,7 +125,9 @@
     }
 
     function searchFor(data){
-      searchResults = _.filter(articles, function(article){ return _.isMatch(article, {location: data.text}); });      
+      searchResults = _.filter(articles, function(article){ return (_.isMatch(article, {title: data.text})
+                                                                  || _.isMatch(article, {organizer: data.text})
+                                                                    || _.isMatch(article, {location: data.text})); });      
     }
 
   }
