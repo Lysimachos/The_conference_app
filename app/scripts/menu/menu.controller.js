@@ -40,25 +40,36 @@
       // Execute action
    });
 
-	 $scope.inputVal={text: ''};
 	 $scope.ipObj1 = {
 		callback: function (val) {  //Mandatory
-			$scope.ipObj1.inputDate = val; //TODO html button update bug
+			callbackDate(val);
 		},
-		from: new Date(2012, 1, 1), //Optional
-		to: new Date(2016, 10, 30), //Optional
+		from: new Date(2008, 10, 30), //Optional
+		to: new Date(2018, 10, 30), //Optional
 		inputDate: new Date(),      //Optional
 		mondayFirst: true,          //Optional
 		closeOnSelect: false,       //Optional
 		templateType: 'popup'       //Optional
 	 };
+
+	 $scope.pickedDate = new Date();
+
+	 var callbackDate = function (val) {
+		 if (typeof(val) === 'undefined') {
+			 console.log('No date selected');
+		 } else {			 
+			 $scope.pickedDate = val;
+		 }
+	 };
+
 	 $scope.openDatePicker = function(){
 		 ionicDatePicker.openDatePicker($scope.ipObj1);
 	 };
+
+	 $scope.inputVal = {text: ''};
+
 	 $scope.passSearchParameters = function(){
-		 var data = {date: $scope.ipObj1.inputDate, text: $scope.inputVal.text};
-		 $rootScope.$broadcast('search', data);		 
-		 // callback function then navigate to search view
+		 var data = {date: $scope.pickedDate, text: $scope.inputVal.text};
 		 $scope.closePopover();
 		 $state.go('app.search').then(function(){
 			 $rootScope.$broadcast('search', data);

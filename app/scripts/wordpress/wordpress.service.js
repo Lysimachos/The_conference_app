@@ -125,12 +125,12 @@
     }
 
     function ddMmYyyToDate(date){
-      var dateParts = date.split("/");
-      var dateObject = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);      
+      var dateParts = date.split('/');
+      var dateObject = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
       return dateObject;
     }
 
-    function searchFor(data){
+    function searchFor(data){      
       searchResults = _.filter(articles, function(article)
       {
         return (
