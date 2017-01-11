@@ -9,7 +9,8 @@
 			<div ng-bind-html="vm.article.about"></div>
 			<p class="postby">{{vm.article.organizer}} from {{vm.article.date_start}} to {{vm.article.date_end}} </p>
 			<p class="categories">[{{vm.article.location}}] [{{vm.article.venue}}]</p>
-			<p class="categories">[{{vm.article.link}}] [{{vm.article.link}}]</p </div>
+			<p class="categories">[{{vm.article.link}}] [{{vm.article.link}}]</p>
+		</div>
 			<ion-list class="card">
 				<ion-item ng-repeat="entry in vm.article.schedule" class="item item-text-wrap">
 					<div class="item-expand " ng-class="vm.isItemShown(entry) ? ' active' : ' inactive'">
@@ -17,7 +18,7 @@
 						<p>{{entry.start_time}} - {{entry.end_time}}</p>
 						<h2>{{entry.speaker}}</h2>
 						<p>{{entry.description}}</p>
-						<a href="{{entry.files}}">Related Files</a><br/>
+						<a ng-click="vm.openPdf()">Related Files</a><br/>
 					</div>
 					<div ng-click="vm.toggleItem(entry)" class="item-expand-footer">
 						<i ng-class="vm.isItemShown(entry) ? 'ion-ios-minus-outline' : 'ion-ios-plus-outline'"></i> {{ vm.isGroupShown(entry) ? 'Less' : 'More' }}

@@ -5,10 +5,10 @@
 	.module('supermodular.wordpress')
 	.controller('WordpressArticleController', WordpressArticleController);
 
-	WordpressArticleController.$inject = ['$scope', '$stateParams', '$ionicActionSheet', '$cordovaSocialSharing', 'wordpressService'];
+	WordpressArticleController.$inject = ['$scope', '$stateParams', '$ionicActionSheet', '$cordovaSocialSharing', '$cordovaFileOpener2', 'wordpressService'];
 
 	/* @ngInject */
-	function WordpressArticleController($scope, $stateParams, $ionicActionSheet, $cordovaSocialSharing, wordpressService) {
+	function WordpressArticleController($scope, $stateParams, $ionicActionSheet, $cordovaSocialSharing, $cordovaFileOpener2, wordpressService) {
 		var articleId = parseInt($stateParams.articleId, 10);
 		var vm = angular.extend(this, {
 			article: null,
@@ -17,7 +17,8 @@
 			isItemShown : isItemShown,
 			toggleItem : toggleItem,
 			testFunc : testFunc,
-			isFav: false
+			isFav: false,
+			openPdf: openPdf
 		});
 
 		function activate() {
@@ -121,7 +122,19 @@
 		};
 		function isItemShown(entry) {
 			return vm.shownItem === entry;
-		};
+		}
+
+		function openPdf(){
+			$cordovaFileOpener2.open(
+				'/sdcard/Download/file.pdf',
+				'application/pdf'
+			).then(function() {
+				console.log('file opened successfully');
+			}, function(err) {
+				console.log('Error status: ' + err.status + ' - Error message: ' + err.message);
+			});
+
+		}
 
 		function testFunc(){
 			console.log('I ran');
