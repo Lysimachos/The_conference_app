@@ -239,6 +239,7 @@
     "ionic-plugin-keyboard",
     "cordova-plugin-console",
     "cordova-plugin-inappbrowser",
-    "cordova-plugin-console"
+    "cordova-plugin-console",
+    "cordova-plugin-transport-security"
   ]
 }

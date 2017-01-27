@@ -130,7 +130,7 @@
       return dateObject;
     }
 
-    function searchFor(data){      
+    function searchFor(data){
       searchResults = _.filter(articles, function(article)
       {
         return (

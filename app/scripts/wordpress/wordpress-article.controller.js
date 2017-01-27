@@ -5,10 +5,10 @@
 	.module('supermodular.wordpress')
 	.controller('WordpressArticleController', WordpressArticleController);
 
-	WordpressArticleController.$inject = ['$scope', '$stateParams', '$ionicActionSheet', '$cordovaSocialSharing', '$cordovaFileOpener2', 'wordpressService'];
+	WordpressArticleController.$inject = ['$scope', '$stateParams', '$ionicActionSheet', '$cordovaSocialSharing', 'wordpressService'];
 
 	/* @ngInject */
-	function WordpressArticleController($scope, $stateParams, $ionicActionSheet, $cordovaSocialSharing, $cordovaFileOpener2, wordpressService) {
+	function WordpressArticleController($scope, $stateParams, $ionicActionSheet, $cordovaSocialSharing, wordpressService) {
 		var articleId = parseInt($stateParams.articleId, 10);
 		var vm = angular.extend(this, {
 			article: null,
@@ -119,21 +119,26 @@
 				} else {
 				vm.shownItem = entry;
 			}
-		};
+		}
 		function isItemShown(entry) {
 			return vm.shownItem === entry;
 		}
 
-		function openPdf(){
-			$cordovaFileOpener2.open(
-				'/sdcard/Download/file.pdf',
-				'application/pdf'
-			).then(function() {
-				console.log('file opened successfully');
-			}, function(err) {
-				console.log('Error status: ' + err.status + ' - Error message: ' + err.message);
-			});
+		function openPdf(url){
+			cordova.plugins.fileOpener2.open(
+				url,
+				'application/pdf',
+				{
+					error : function(e) {
+						console.log('Error status: ' + e.status + ' - Error message: ' + e.message);
+					},
+					success : function () {
+						console.log('file opened: ' + url);
+					}
+				}
 
+
+			);
 		}
 
 		function testFunc(){

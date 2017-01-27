@@ -18,7 +18,9 @@
 						<p>{{entry.start_time}} - {{entry.end_time}}</p>
 						<h2>{{entry.speaker}}</h2>
 						<p>{{entry.description}}</p>
-						<a ng-click="vm.openPdf()">Related Files</a><br/>
+						<button class="button icon-left ion-document button-positive" ng-click="vm.openPdf(entry.file)">
+							Related files...
+	          </button>
 					</div>
 					<div ng-click="vm.toggleItem(entry)" class="item-expand-footer">
 						<i ng-class="vm.isItemShown(entry) ? 'ion-ios-minus-outline' : 'ion-ios-plus-outline'"></i> {{ vm.isGroupShown(entry) ? 'Less' : 'More' }}
