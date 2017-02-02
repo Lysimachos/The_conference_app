@@ -125,20 +125,16 @@
 		}
 
 		function openPdf(url){
-			cordova.plugins.fileOpener2.open(
-				url,
-				'application/pdf',
-				{
-					error : function(e) {
-						console.log('Error status: ' + e.status + ' - Error message: ' + e.message);
-					},
-					success : function () {
-						console.log('file opened: ' + url);
+			handleDocumentWithURL(
+				function() {console.log('success');},
+				function(error) {
+					console.log('failure');
+					if(error == 53) {
+						console.log('No app that handles this file type.');
 					}
-				}
-
-
-			);
+				},
+				url
+			);			
 		}
 
 		function testFunc(){
