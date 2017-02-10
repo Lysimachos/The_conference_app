@@ -5,10 +5,10 @@
 	.module('supermodular.wordpress')
 	.controller('WordpressArticleController', WordpressArticleController);
 
-	WordpressArticleController.$inject = ['$scope', '$stateParams', '$ionicActionSheet', '$cordovaSocialSharing', 'wordpressService'];
+	WordpressArticleController.$inject = ['$scope', '$window', '$stateParams', '$ionicActionSheet', '$cordovaSocialSharing', 'wordpressService'];
 
 	/* @ngInject */
-	function WordpressArticleController($scope, $stateParams, $ionicActionSheet, $cordovaSocialSharing, wordpressService) {
+	function WordpressArticleController($scope, $window, $stateParams, $ionicActionSheet, $cordovaSocialSharing, wordpressService) {
 		var articleId = parseInt($stateParams.articleId, 10);
 		var vm = angular.extend(this, {
 			article: null,
@@ -18,7 +18,8 @@
 			toggleItem : toggleItem,
 			testFunc : testFunc,
 			isFav: false,
-			openPdf: openPdf
+			openPdf: openPdf,
+			goToUrl: goToUrl
 		});
 
 		function activate() {
@@ -134,7 +135,12 @@
 					}
 				},
 				url
-			);			
+			);
+		}
+
+		function goToUrl(url){
+			$window.open(url, '_system', 'location=yes');
+			//return false;
 		}
 
 		function testFunc(){

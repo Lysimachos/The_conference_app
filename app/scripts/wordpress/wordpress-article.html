@@ -10,7 +10,9 @@
 			<p class="postby">{{vm.article.organizer}} from {{vm.article.date_start}} to {{vm.article.date_end}} </p>
 			<p class="categories">[{{vm.article.location}}] [{{vm.article.venue}}]</p>
 			<p class="categories">[{{vm.article.contact}}] </p>
-			<a href="{{vm.article.link}}">Visit homepage</a>
+			<a class="button button-icon icon ion-android-globe" ng-click="vm.goToUrl(vm.article.link)">
+				Visit homepage
+			</a>
 		</div>
 			<ion-list class="card">
 				<ion-item ng-repeat="entry in vm.article.schedule" class="item item-text-wrap">
